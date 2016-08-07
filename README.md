@@ -1,1 +1,1 @@
-Walkthrough of the Natural Language Processing course from Coursera
+Walkthrough of the Deep Learning course from Udacity
