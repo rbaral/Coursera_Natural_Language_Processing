@@ -1,1 +1,1 @@
-# Coursera_Natural_Language_Processing
+Walkthrough of the Natural Language Processing courser from Coursera
