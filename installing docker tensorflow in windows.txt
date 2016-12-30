@@ -1,0 +1,35 @@
+You can run it inside docker (that is what worked for me). Here are the steps:
+
+Step1: Download and install docker toolbox for windows
+Step2: Run the folowing command to create a docker virtual machine:
+$docker-machine create vdocker -d virtualbox
+Step3 (Optional): In a cmd window type the following:
+
+FOR /f "tokens=*" %i IN ('docker-machine env --shell cmd vdocker') DO %i
+Step4: Run the docker by pointing it to the tensorflow image, using the following command:
+
+$docker run -it b.gcr.io/tensorflow/tensorflow
+
+This will run the iPython notebook at default port 8888. The host should be default host in most of the cases. 
+For the default host, you can access the ipython notebook as:
+http://127.0.0.1:8888
+
+If you are not able to access it at default host (localhost), then find the default ip the docker is allowing for the iPython notebook. On mac, find the virtual machine's IP using the following command:
+
+$docker-machine ip default
+
+Then go to: http://IP:8888 (likely http://192.168.99.100:8888)
+
+Sometimes, you need to map the container's port to the host machine's port. If the port mapping is required then run the following command:
+$winpty docker run -it -p 8888:8888 7e0be98eae06 
+
+or simply
+
+$docker run -it -p 8888:8888 7e0be98eae06
+
+where the number 7e0be98eae06 is the tensorflow imageid running. You can get this id by using the following command: 
+$docker images
+
+References:
+1) https://github.com/tensorflow/tensorflow/blob/master/tensorflow/examples/udacity/README.md
+2) https://www.tensorflow.org/versions/r0.10/get_started/os_setup.html#docker-installation
